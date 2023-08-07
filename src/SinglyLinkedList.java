@@ -1,4 +1,3 @@
-import javax.swing.*;
 
 public class SinglyLinkedList {
     private Node head, tail;
@@ -72,6 +71,50 @@ public class SinglyLinkedList {
         Node node = new Node(value, temp.next);
         temp.next = node;
         size++;
-
     }
+
+    public int deleteFirst(){
+        int val = head.value;
+        head = head.next;
+        if (head == null){
+            tail = null;
+        }
+        size--;
+        return val;
+    }
+
+    public Node get(int index){
+        Node node = head;
+        for(int i=0; i<index; i++){
+            node = node.next;
+        }
+        return node;
+    }
+
+    public int deleteLastElement(){
+        if (size <= 1){
+            return deleteFirst();
+        }
+        Node secondLast = get(size-2);
+        int value = tail.value;
+        tail = secondLast;
+        tail.next = null;
+        return value;
+    }
+
+    public int delete(int index){
+        if (index==0){
+            deleteFirst();
+        }
+
+        if (index == size-1){
+            return deleteLastElement();
+        }
+
+        Node previous = get(index-1);
+        int value = previous.next.value;
+        previous.next = previous.next.next;
+        return value;
+    }
+
 }
