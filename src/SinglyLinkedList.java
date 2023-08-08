@@ -117,4 +117,17 @@ public class SinglyLinkedList {
         return value;
     }
 
+    public void insertRecursion(int value, int index){
+        head = insertRecursion(value, index, head);
+    }
+
+    private Node insertRecursion(int value, int index, Node node){
+        if (index == 0){
+            Node temp = new Node(value, node);
+            size++;
+            return temp;
+        }
+        node.next = insertRecursion(value, index-1, node.next);
+        return node;
+    }
 }

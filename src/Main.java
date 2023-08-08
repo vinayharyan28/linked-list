@@ -11,6 +11,7 @@ public class Main {
         System.out.println(singlyLinkedList.deleteFirst());
         System.out.println(singlyLinkedList.deleteLastElement());
         System.out.println(singlyLinkedList.delete(2));
+        singlyLinkedList.insertRecursion(88, 2);
         singlyLinkedList.display();
 
         System.out.println("Doubly linked list: ");
