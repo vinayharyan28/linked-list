@@ -1,3 +1,4 @@
+
 public class SinglyLinkedListQuestions {
     Node head, tail;
     int size = 0;
@@ -50,6 +51,34 @@ public class SinglyLinkedListQuestions {
         }
     }
 
+    public static SinglyLinkedListQuestions merge(SinglyLinkedListQuestions first, SinglyLinkedListQuestions second){
+        Node f = first.head;
+        Node s = second.head;
+
+        SinglyLinkedListQuestions ans = new SinglyLinkedListQuestions();
+        while (f != null && s != null){
+            if (f.value < s.value){
+                ans.addLast(f.value);
+                f = f.next;
+            }else{
+                ans.addLast(s.value);
+                s = s.next;
+            }
+        }
+
+        while (f != null){
+            ans.addLast(f.value);
+            f = f.next;
+        }
+
+        while (s != null){
+            ans.addLast(s.value);
+            s = s.next;
+        }
+
+        return ans;
+    }
+
     public static void main(String[] args){
         SinglyLinkedListQuestions questions = new SinglyLinkedListQuestions();
         questions.addLast(1);
@@ -60,5 +89,20 @@ public class SinglyLinkedListQuestions {
         questions.addLast(3);
         questions.removeDuplicate();
         questions.display();
+
+        SinglyLinkedListQuestions first = new SinglyLinkedListQuestions();
+        SinglyLinkedListQuestions second = new SinglyLinkedListQuestions();
+        first.addLast(1);
+        first.addLast(4);
+        first.addLast(7);
+        first.addLast(9);
+
+        second.addLast(0);
+        second.addLast(2);
+        second.addLast(3);
+        second.addLast(8);
+        System.out.println();
+        SinglyLinkedListQuestions ans = merge(first, second);
+        ans.display();
     }
 }
